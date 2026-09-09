@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afrinova Media | Your Moments. Our Passion.</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090909;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+:root {
+    --gold: #d9a441;
+    --gold-light: #f0bf5f;
+    --black: #090909;
+    --dark: #111111;
+    --dark-light: #181818;
+    --white: #ffffff;
+    --gray: #a8a8a8;
+}
+
+section {
+    width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.small-title {
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 45px;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.section-title span {
+    color: var(--gold);
+}
+
+.section-description {
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 500px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-gold {
+    background: var(--gold);
+    color: #111;
+    border: 1px solid var(--gold);
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px);
+    background: var(--gold-light);
+    box-shadow: 0 10px 30px rgba(217,164,65,0.4);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.4s;
+}
+
+nav.scrolled {
+    background: rgba(5,5,5,0.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(217,164,65,0.2);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 30px;
+    color: var(--gold);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text strong {
+    color: white;
+    letter-spacing: 2px;
+}
+
+.logo-text span {
+    font-size: 8px;
+    color: var(--gold);
+    letter-spacing: 5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.book-nav {
+    background: var(--gold);
+    color: black !important;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #050505;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.90) 0%,
+            rgba(0,0,0,0.68) 45%,
+            rgba(0,0,0,0.25) 100%
+        );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-welcome {
+    color: var(--gold);
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 7vw, 100px);
+    line-height: 0.95;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    color: #dddddd;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--gold);
+    text-align: center;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+.services-section {
+    background:
+        radial-gradient(
+            circle at top right,
+            #1c1409,
+            #090909 60%
+        );
+}
+
+.services-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.services-left {
+    position: sticky;
+    top: 120px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.service-card {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(217,164,65,0.35);
+    cursor: pointer;
+    background: #111;
+}
+
+.service-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+}
+
+.service-card:hover img {
+    transform: scale(1.12);
+}
+
+.service-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.95)
+        );
+}
+
+.service-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.service-card p {
+    color: #cccccc;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.portfolio-section {
+    background: #eeeeea;
+    color: #151515;
+}
+
+.portfolio-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 2fr;
+    gap: 60px;
+}
+
+.portfolio-left {
+    padding-top: 20px;
+}
+
+.portfolio-left .section-description {
+    color: #666;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background: #151515;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.filter-btn.active {
+    background: var(--gold);
+    color: black;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.port-item {
+    height: 180px;
+    overflow: hidden;
+    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+    background: #151515;
+}
+
+.port-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+    display: block;
+}
+
+.port-item:hover img {
+    transform: scale(1.1);
+}
+
+.port-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.6)
+        );
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.port-item:hover::after {
+    opacity: 1;
+}
+
+.video-item {
+    grid-column: span 2;
+    height: 260px;
+    cursor: default;
+}
+
+.video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: #111;
+    transition: 0.5s;
+}
+
+.video-item:hover video {
+    transform: scale(1.03);
+}
+
+.video-label {
+    position: absolute;
+    left: 18px;
+    bottom: 15px;
+    z-index: 3;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    pointer-events: none;
+}
+
+.showreel-section {
+    min-height: 650px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #050505;
+    text-align: center;
+}
+
+.showreel-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.showreel-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.showreel-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.68),
+            rgba(0,0,0,0.86)
+        );
+    z-index: 1;
+}
+
+.sound-indicator {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    z-index: 5;
+    background: rgba(0,0,0,0.65);
+    border: 1px solid rgba(217,164,65,0.6);
+    color: var(--gold);
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sound-indicator:hover {
+    background: rgba(217,164,65,0.15);
+}
+
+.showreel-content {
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.play-circle {
+    width: 75px;
+    height: 75px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto;
+    color: var(--gold);
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.play-circle:hover {
+    background: rgba(217,164,65,0.15);
+    transform: scale(1.08);
+}
+
+.showreel-title {
+    font-size: 55px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.showreel-title span {
+    color: var(--gold);
+}
+
+.showreel-link {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.advantage-section {
+    background: #0d0d0d;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 60px 0;
+    border-top: 1px solid rgba(217,164,65,0.25);
+    border-bottom: 1px solid rgba(217,164,65,0.25);
+}
+
+.stat {
+    text-align: center;
+    padding: 35px;
+    border-right: 1px solid rgba(217,164,65,0.2);
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat-number {
+    font-size: 40px;
+    color: var(--gold);
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature {
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+}
+
+.feature-icon {
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.testimonial-section {
+    background: #f1efeb;
+    color: #161616;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.testimonial {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.stars {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.testimonial p {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.client {
+    font-weight: bold;
+}
+
+.booking-section {
+    position: relative;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.9),
+            rgba(0,0,0,0.6)
+        ),
+        url("assets/booking-bg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.booking-contact {
+    color: white;
+}
+
+.booking-contact h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.booking-contact h2 span {
+    color: var(--gold);
+}
+
+.contact-item {
+    margin-top: 20px;
+    color: #ddd;
+}
+
+.booking-form {
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(15px);
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid rgba(217,164,65,0.25);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    padding: 14px;
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    border-radius: 6px;
+    outline: none;
+}
+
+.booking-form textarea {
+    margin-top: 15px;
+    height: 100px;
+    resize: none;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: var(--gold);
+}
+
+.booking-form button {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.whatsapp-note {
+    text-align: center;
+    margin-top: 15px;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.whatsapp-note span {
+    color: var(--gold);
+}
+
+#successMessage {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+
+#successMessage h2 {
+    color: var(--gold);
+}
+
+footer {
+    background: #050505;
+    padding: 50px 0 20px;
+    border-top: 1px solid rgba(217,164,65,0.2);
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 35px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #777;
+    font-size: 11px;
+}
+
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+.socials a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+@media(max-width: 1000px) {
+    .services-layout,
+    .portfolio-layout,
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .services-left {
+        position: static;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .video-item {
+        grid-column: span 2;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        width: 100%;
+        background: #080808;
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-item {
+        grid-column: span 2;
+        height: 230px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat {
+        border-bottom: 1px solid rgba(217,164,65,0.2);
+    }
+
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top,
+    .footer-bottom {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .showreel-title {
+        font-size: 42px;
+    }
+}
+
+@media(max-width: 500px) {
+    .section-padding {
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .video-item {
+        grid-column: span 2;
+        height: 210px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat {
+        padding: 20px 10px;
+    }
+
+    .showreel-title {
+        font-size: 35px;
+    }
+
+    .sound-indicator {
+        right: 15px;
+        bottom: 15px;
+        font-size: 9px;
+        padding: 10px 14px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <div class="logo-icon">📷</div>
+            <div class="logo-text">
+                <strong>AFRINOVA</strong>
+                <span>MEDIA</span>
+            </div>
+        </div>
+
+```
+    <div class="menu-toggle" id="menuToggle">☰</div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a href="#booking" class="book-nav">BOOK NOW</a>
+    </div>
+</div>
+```
+
+</nav>
+
+<section id="home" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892802/Afrinova_media.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+```
+<div class="hero-content">
+    <div class="hero-text">
+        <div class="hero-welcome">✦ WELCOME TO AFRINOVA MEDIA</div>
+
+        <h1>
+            YOUR MOMENTS.
+            <br>
+            <span>OUR PASSION.</span>
+        </h1>
+
+        <p>
+            We capture unforgettable moments through professional photography,
+            videography, and creative visual storytelling.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#booking" class="btn btn-gold">📸 BOOK A SHOOT</a>
+            <a href="#portfolio" class="btn btn-outline">EXPLORE OUR WORK →</a>
+        </div>
+    </div>
+</div>
+
+<div class="scroll-down">↓</div>
+```
+
+</section>
+
+<section id="services" class="services-section section-padding">
+    <div class="container">
+        <div class="services-layout">
+            <div class="services-left">
+                <div class="small-title">OUR SERVICES</div>
+
+```
+            <h2 class="section-title">
+                WHAT WE
+                <span>OFFER</span>
+            </h2>
+
+            <p class="section-description">
+                We provide a wide range of professional photography and videography
+                services tailored to your unique moments.
+            </p>
+
+            <br><br>
+
+            <a href="#booking" class="btn btn-outline">VIEW ALL SERVICES →</a>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85" alt="Cinematic corporate team meeting">
+                <div class="service-overlay">
+                    <h3>CORPORATE SHOOTS</h3>
+                    <p>Professional photography for companies and businesses.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="Cinematic wedding couple">
+                <div class="service-overlay">
+                    <h3>WEDDING SHOOTS</h3>
+                    <p>Capture your love story and unforgettable moments.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=85" alt="Cinematic fashion model portrait">
+                <div class="service-overlay">
+                    <h3>MODEL SHOOTS</h3>
+                    <p>Fashion, lifestyle and portfolio photography.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85" alt="Cinematic live event crowd">
+                <div class="service-overlay">
+                    <h3>EVENT SHOOTS</h3>
+                    <p>Concerts, parties and special celebrations.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=1200&q=85" alt="Cinematic birthday celebration">
+                <div class="service-overlay">
+                    <h3>BIRTHDAY SHOOTS</h3>
+                    <p>Creative and memorable birthday photography.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=85" alt="Professional cinematic camera production">
+                <div class="service-overlay">
+                    <h3>PROFESSIONAL SHOOTS</h3>
+                    <p>Custom photography and videography services.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</section>
+
+<section id="portfolio" class="portfolio-section section-padding">
+    <div class="container">
+        <div class="portfolio-layout">
+            <div class="portfolio-left">
+                <div class="small-title">OUR PORTFOLIO</div>
+
+```
+            <h2 class="section-title">
+                OUR RECENT
+                <span>WORK</span>
+            </h2>
+
+            <p class="section-description">
+                A glimpse of our creativity, passion and the stories we have captured.
+            </p>
+
+            <br><br>
+
+            <a href="#portfolio" class="btn" style="border:1px solid #222;color:#222">
+                VIEW FULL PORTFOLIO →
+            </a>
+        </div>
+
+        <div>
+            <div class="filter-bar">
+                <button class="filter-btn active">ALL</button>
+                <button class="filter-btn">WEDDINGS</button>
+                <button class="filter-btn">EVENTS</button>
+                <button class="filter-btn">MODELS</button>
+                <button class="filter-btn">CORPORATE</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="port-item">
+                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788892124/afrinova.png" alt="Afrinova Media portfolio image">
+                </div>
+
+                <div class="port-item">
+                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788891987/IMG_1627.jpg" alt="Afrinova Media photography">
+                </div>
+
+                <div class="port-item">
+                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788893028/E9873D62-B087-4A9C-841E-0A81B9EDCD40.jpg" alt="Afrinova Media event photography">
+                </div>
+
+                <div class="port-item">
+                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788892539/49a3c7ce-6ca1-4342-bdb6-c44aeec856f6_1.jpg" alt="Afrinova Media creative photography">
+                </div>
+
+                <div class="port-item video-item">
+                    <video controls playsinline preload="metadata">
+                        <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892802/Afrinova_media.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div class="video-label">AFRINOVA MEDIA — VIDEO 01</div>
+                </div>
+
+                <div class="port-item video-item">
+                    <video controls playsinline preload="metadata">
+                        <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892414/afrinova.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <div class="video-label">AFRINOVA MEDIA — VIDEO 02</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</section>
+
+<section id="showreel" class="showreel-section">
+    <div class="showreel-video">
+        <video id="showreelVideo" autoplay muted loop playsinline preload="auto">
+            <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892802/Afrinova_media.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+```
+<div class="sound-indicator" id="soundIndicator">🔇 CLICK FOR SOUND</div>
+
+<div class="container">
+    <div class="showreel-content" id="showreelContent">
+        <div class="small-title">WATCH OUR SHOWREEL</div>
+
+        <div class="play-circle">▶</div>
+
+        <h2 class="showreel-title">
+            OUR STORY
+            <br>
+            IN <span>MOTION</span>
+        </h2>
+
+        <br>
+
+        <a href="#showreel" class="btn btn-outline showreel-link" id="showreelButton">
+            ▶ WATCH REAL SHOWREEL
+        </a>
+    </div>
+</div>
+```
+
+</section>
+
+<section id="about" class="advantage-section section-padding">
+    <div class="container">
+        <div class="small-title">WHY CHOOSE US</div>
+
+```
+    <h2 class="section-title">
+        THE AFRINOVA
+        <span>ADVANTAGE</span>
+    </h2>
+
+    <p class="section-description">
+        We don't just take pictures. We capture emotions, stories and unforgettable memories.
+    </p>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">SHOOTS DONE</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">HAPPY CLIENTS</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">YEARS EXPERIENCE</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">SUPPORT</div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">◉</div>
+            <h3>QUALITY</h3>
+            <p>Professional equipment and creative expertise.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">✦</div>
+            <h3>CREATIVITY</h3>
+            <p>Every project is treated as a unique story.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">✓</div>
+            <h3>RELIABILITY</h3>
+            <p>We deliver professional results every time.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">♥</div>
+            <h3>PASSION</h3>
+            <p>We don't just take pictures. We capture emotions.</p>
+        </div>
+    </div>
+</div>
+```
+
+</section>
+
+<section id="testimonials" class="testimonial-section section-padding">
+    <div class="container">
+        <div class="small-title">TESTIMONIALS</div>
+
+```
+    <h2 class="section-title">
+        WHAT OUR
+        <span>CLIENTS SAY</span>
+    </h2>
+
+    <div class="testimonial-grid">
+        <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Afrinova Media captured our special moments beautifully.
+                The quality was amazing!"
+            </p>
+            <div class="client">— Immanuel M.</div>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+                "Professional, creative and very friendly. The final results
+                were beyond our expectations."
+            </p>
+            <div class="client">— Jeremiah N.</div>
+        </div>
+
+        <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+                "The best media experience. Their work speaks for itself!"
+            </p>
+            <div class="client">— Malakia L.</div>
+        </div>
+    </div>
+</div>
+```
+
+</section>
+
+<section id="booking" class="booking-section section-padding">
+    <div class="container">
+        <div class="booking-layout">
+            <div class="booking-contact">
+                <div class="small-title">BOOK A SHOOT</div>
+
+```
+            <h2>
+                LET'S CREATE
+                <br>
+                SOMETHING
+                <span>AMAZING</span>
+            </h2>
+
+            <p>
+                Fill in the form and your booking request will be sent directly
+                to Afrinova Media via WhatsApp.
+            </p>
+
+            <div class="contact-item">
+                📞 +264 85 796 7850
+                <br>
+                📞 +264 85 814 5526
+            </div>
+
+            <div class="contact-item">
+                ✉
+                <a href="mailto:afrinovamediana@gmail.com" style="color:inherit;">
+                    afrinovamediana@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <div class="booking-form">
+            <form id="bookingForm">
+                <div class="form-grid">
+                    <input type="text" id="clientName" placeholder="Full Name" required>
+                    <input type="tel" id="clientPhone" placeholder="Phone Number" required>
+                    <input type="email" id="clientEmail" placeholder="Email Address" required>
+
+                    <select id="service" required>
+                        <option value="">Select Service</option>
+                        <option value="Corporate Shoot">Corporate Shoot</option>
+                        <option value="Wedding Shoot">Wedding Shoot</option>
+                        <option value="Model Shoot">Model Shoot</option>
+                        <option value="Events Shoot">Events Shoot</option>
+                        <option value="Birthday Shoot">Birthday Shoot</option>
+                        <option value="Professional Shoot">Professional Shoot</option>
+                    </select>
+
+                    <input type="date" id="eventDate" required>
+                    <input type="text" id="location" placeholder="Location" required>
+                </div>
+
+                <textarea id="projectDetails" placeholder="Tell us more about your project..." required></textarea>
+
+                <button type="submit" class="btn btn-gold">
+                    📲 SEND BOOKING VIA WHATSAPP →
+                </button>
+            </form>
+
+            <div class="whatsapp-note">
+                Your booking details will be prepared and sent to
+                <span>AFRINOVA MEDIA on WhatsApp.</span>
+            </div>
+
+            <div id="successMessage">
+                <h2>✓ BOOKING REQUEST READY</h2>
+                <br>
+                <p>
+                    WhatsApp has been opened with your booking details.
+                    <br><br>
+                    Please press <strong>SEND</strong> in WhatsApp to complete your booking.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-top">
+            <div class="logo">
+                <div class="logo-icon">📷</div>
+
+```
+            <div class="logo-text">
+                <strong>AFRINOVA</strong>
+                <span>MEDIA</span>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div>© 2026 Afrinova Media. All rights reserved.</div>
+
+        <div class="socials">
+            <a href="#showreel">Showreel</a>
+            <a href="#">Facebook</a>
+            <a href="#">YouTube</a>
+            <a href="https://wa.me/264857967850" target="_blank" rel="noopener noreferrer">
+                WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+```
+
+</footer>
+
+<script>
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function() {
+    navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+    link.addEventListener("click", function() {
+        navLinks.classList.remove("active");
+    });
+});
+
+const whatsappNumber = "264857967850";
+const bookingForm = document.getElementById("bookingForm");
+const successMessage = document.getElementById("successMessage");
+
+bookingForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const clientName = document.getElementById("clientName").value.trim();
+    const clientPhone = document.getElementById("clientPhone").value.trim();
+    const clientEmail = document.getElementById("clientEmail").value.trim();
+    const service = document.getElementById("service").value;
+    const eventDate = document.getElementById("eventDate").value;
+    const location = document.getElementById("location").value.trim();
+    const projectDetails = document.getElementById("projectDetails").value.trim();
+
+    const readableDate = new Date(eventDate + "T00:00:00").toLocaleDateString(
+        "en-GB",
+        {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+        }
+    );
+
+    const message =
+`*AFRINOVA MEDIA – NEW BOOKING*
+
+Hello Afrinova Media,
+
+I would like to make a booking.
+
+*CLIENT DETAILS*
+Name: ${clientName}
+Phone: ${clientPhone}
+Email: ${clientEmail}
+
+*BOOKING DETAILS*
+Service: ${service}
+Event Date: ${readableDate}
+Location: ${location}
+
+*PROJECT DETAILS*
+${projectDetails}
+
+Thank you.
+I look forward to hearing from you.
+
+— Sent via Afrinova Media Website`;
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+
+    bookingForm.style.display = "none";
+    document.querySelector(".whatsapp-note").style.display = "none";
+    successMessage.style.display = "block";
+});
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+filterButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        filterButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+    });
+});
+
+const showreel = document.getElementById("showreel");
+const showreelVideo = document.getElementById("showreelVideo");
+const soundIndicator = document.getElementById("soundIndicator");
+const showreelContent = document.getElementById("showreelContent");
+
+const showreelObserver = new IntersectionObserver(
+    function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                showreelVideo.play().catch(function() {});
+            } else {
+                showreelVideo.pause();
+            }
+        });
+    },
+    {
+        threshold: 0.35
+    }
+);
+
+showreelObserver.observe(showreel);
+
+function toggleShowreelSound() {
+    showreelVideo.muted = !showreelVideo.muted;
+
+    if (showreelVideo.muted) {
+        soundIndicator.innerHTML = "🔇 CLICK FOR SOUND";
+    } else {
+        soundIndicator.innerHTML = "🔊 SOUND ON — CLICK TO MUTE";
+        showreelVideo.play().catch(function() {});
+    }
+}
+
+showreelContent.addEventListener("click", function(event) {
+    if (event.target.closest(".showreel-link")) {
+        return;
+    }
+
+    toggleShowreelSound();
+});
+
+soundIndicator.addEventListener("click", function(event) {
+    event.stopPropagation();
+    toggleShowreelSound();
+});
+
+document.getElementById("showreelButton").addEventListener("click", function() {
+    setTimeout(function() {
+        showreelVideo.play().catch(function() {});
+    }, 500);
+});
+
+const heroVideo = document.querySelector(".hero-video");
+heroVideo.play().catch(function() {});
+</script>
+
+</body>
+</html>
