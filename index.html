@@ -970,6 +970,83 @@ footer {
         padding: 10px 14px;
     }
 }
+
+/* Portfolio gallery improvements */
+.photo-item {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    text-align: left;
+    color: white;
+}
+.photo-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.photo-label {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 2;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.9);
+    opacity: 0;
+    transition: opacity .25s;
+    pointer-events: none;
+}
+.photo-item:hover .photo-label,
+.photo-item:focus-visible .photo-label { opacity: 1; }
+.port-item[hidden] { display: none !important; }
+.port-item:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.video-item { cursor: default; }
+.gallery-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    padding: 65px 70px 55px;
+    background: rgba(0,0,0,.94);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.gallery-lightbox.open { display: flex; }
+.gallery-lightbox img {
+    max-width: min(100%, 1200px);
+    max-height: 78vh;
+    object-fit: contain;
+    box-shadow: 0 10px 50px rgba(0,0,0,.5);
+}
+.lightbox-close, .lightbox-nav {
+    position: absolute;
+    border: 1px solid rgba(217,164,65,.65);
+    background: rgba(10,10,10,.75);
+    color: var(--gold);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox-close { top: 18px; right: 22px; width: 44px; height: 44px; font-size: 30px; }
+.lightbox-nav { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 20px; }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+.lightbox-caption { color: #eee; margin-top: 16px; font-size: 13px; letter-spacing: 1px; text-align: center; }
+@media (max-width: 500px) {
+    .gallery-lightbox { padding: 60px 48px 40px; }
+    .lightbox-nav { width: 38px; height: 38px; font-size: 16px; }
+    .lightbox-prev { left: 5px; }
+    .lightbox-next { right: 5px; }
+}
+
 </style>
 
 </head>
@@ -985,8 +1062,6 @@ footer {
                 <span>MEDIA</span>
             </div>
         </div>
-
-```
     <div class="menu-toggle" id="menuToggle">☰</div>
 
     <div class="nav-links" id="navLinks">
@@ -999,8 +1074,6 @@ footer {
         <a href="#booking" class="book-nav">BOOK NOW</a>
     </div>
 </div>
-```
-
 </nav>
 
 <section id="home" class="hero">
@@ -1008,8 +1081,6 @@ footer {
         <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892802/Afrinova_media.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
-```
 <div class="hero-content">
     <div class="hero-text">
         <div class="hero-welcome">✦ WELCOME TO AFRINOVA MEDIA</div>
@@ -1033,8 +1104,6 @@ footer {
 </div>
 
 <div class="scroll-down">↓</div>
-```
-
 </section>
 
 <section id="services" class="services-section section-padding">
@@ -1042,8 +1111,6 @@ footer {
         <div class="services-layout">
             <div class="services-left">
                 <div class="small-title">OUR SERVICES</div>
-
-```
             <h2 class="section-title">
                 WHAT WE
                 <span>OFFER</span>
@@ -1110,8 +1177,6 @@ footer {
         </div>
     </div>
 </div>
-```
-
 </section>
 
 <section id="portfolio" class="portfolio-section section-padding">
@@ -1119,91 +1184,86 @@ footer {
         <div class="portfolio-layout">
             <div class="portfolio-left">
                 <div class="small-title">OUR PORTFOLIO</div>
-
-```
-            <h2 class="section-title">
-                OUR RECENT
-                <span>WORK</span>
-            </h2>
-
-            <p class="section-description">
-                A glimpse of our creativity, passion and the stories we have captured.
-            </p>
-
-            <br><br>
-
-            <a href="#portfolio" class="btn" style="border:1px solid #222;color:#222">
-                VIEW FULL PORTFOLIO →
-            </a>
-        </div>
-
-        <div>
-            <div class="filter-bar">
-                <button class="filter-btn active">ALL</button>
-                <button class="filter-btn">WEDDINGS</button>
-                <button class="filter-btn">EVENTS</button>
-                <button class="filter-btn">MODELS</button>
-                <button class="filter-btn">CORPORATE</button>
+                <h2 class="section-title">OUR RECENT <span>WORK</span></h2>
+                <p class="section-description">
+                    A glimpse of our creativity, passion and the stories we have captured.
+                    Select a photo to view it larger, or play any video directly here.
+                </p>
+                <br><br>
+                <a href="#portfolio-gallery" class="btn" style="border:1px solid #222;color:#222">
+                    VIEW FULL PORTFOLIO →
+                </a>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="port-item">
-                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788892124/afrinova.png" alt="Afrinova Media portfolio image">
+            <div id="portfolio-gallery">
+                <div class="filter-bar" aria-label="Filter portfolio">
+                    <button type="button" class="filter-btn active" data-filter="all">ALL</button>
+                    <button type="button" class="filter-btn" data-filter="photos">PHOTOS</button>
+                    <button type="button" class="filter-btn" data-filter="videos">VIDEOS</button>
+                    <button type="button" class="filter-btn" data-filter="events">EVENTS</button>
+                    <button type="button" class="filter-btn" data-filter="corporate">CORPORATE</button>
                 </div>
 
-                <div class="port-item">
-                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788891987/IMG_1627.jpg" alt="Afrinova Media photography">
-                </div>
+                <div class="portfolio-grid">
+                    <button type="button" class="port-item photo-item" data-category="photos corporate" data-full-image="https://res.cloudinary.com/qc2lsdme/image/upload/v1788892124/afrinova.png" aria-label="View Afrinova Media portfolio image">
+                        <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788892124/afrinova.png" alt="Afrinova Media portfolio image" loading="lazy">
+                        <span class="photo-label">AFRINOVA MEDIA</span>
+                    </button>
 
-                <div class="port-item">
-                    <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788893028/E9873D62-B087-4A9C-841E-0A81B9EDCD40.jpg" alt="Afrinova Media event photography">
-                </div>
+                    <button type="button" class="port-item photo-item" data-category="photos events" data-full-image="https://res.cloudinary.com/qc2lsdme/image/upload/v1788891987/IMG_1627.jpg" aria-label="View Afrinova Media photography">
+                        <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788891987/IMG_1627.jpg" alt="Afrinova Media photography" loading="lazy">
+                        <span class="photo-label">PHOTOGRAPHY</span>
+                    </button>
 
-                <div class="port-item">
-                    <img src="" alt="Afrinova Media event photography">
-                </div>
+                    <button type="button" class="port-item photo-item" data-category="photos events" data-full-image="https://res.cloudinary.com/qc2lsdme/image/upload/v1788893028/E9873D62-B087-4A9C-841E-0A81B9EDCD40.jpg" aria-label="View Afrinova Media event photography">
+                        <img src="https://res.cloudinary.com/qc2lsdme/image/upload/v1788893028/E9873D62-B087-4A9C-841E-0A81B9EDCD40.jpg" alt="Afrinova Media event photography" loading="lazy">
+                        <span class="photo-label">EVENT PHOTOGRAPHY</span>
+                    </button>
 
-                    <div class="port-item video-item">
-                    <video controls playsinline preload="metadata">
-                        <source src="https://res.cloudinary.com/kp0ox60b/video/upload/v1789807480/VID_20260917_221048_472.mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="port-item video-item" data-category="videos events">
+                        <video controls playsinline preload="metadata">
+                            <source src="https://res.cloudinary.com/kp0ox60b/video/upload/v1789807480/VID_20260917_221048_472.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-label">AFRINOVA MEDIA — VIDEO 01</div>
+                    </div>
 
-                    <div class="video-label">AFRINOVA MEDIA — VIDEO 01</div>
-                </div>
+                    <div class="port-item video-item" data-category="videos corporate">
+                        <video controls playsinline preload="metadata">
+                            <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892802/Afrinova_media.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-label">AFRINOVA MEDIA — VIDEO 02</div>
+                    </div>
 
-                <div class="port-item video-item">
-                    <video controls playsinline preload="metadata">
-                        <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892802/Afrinova_media.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="port-item video-item" data-category="videos events">
+                        <video controls playsinline preload="metadata">
+                            <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892414/afrinova.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-label">AFRINOVA MEDIA — VIDEO 03</div>
+                    </div>
 
-                    <div class="video-label">AFRINOVA MEDIA — VIDEO 02</div>
-                </div>
-                <div class="port-item video-item">
-                    <video controls playsinline preload="metadata">
-                        <source src="https://res.cloudinary.com/qc2lsdme/video/upload/v1788892414/afrinova.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-
-                    <div class="video-label">AFRINOVA MEDIA — VIDEO 04</div>
-
-                <div class="port-item video-item">
-                    <video controls playsinline preload="metadata">
-                        <source src="https://res.cloudinary.com/kp0ox60b/video/upload/v1789807496/From_building_blocks_to_bigger_dreams_and_from_playground_games_to_lifelong_paths._It_was_an_honour_to_have_been_part_of_creativing_memories_of_the_Toivo_Ya.mp4,https://res.cloudinary.com/qc2lsdme/video/upload/v1788892414/afrinova.mp4">
-                        Your browser does not support the video tag.
-                    </video>
-
-                    <div class="video-label">AFRINOVA MEDIA — VIDEO 03</div>
-                </div>
+                    <div class="port-item video-item" data-category="videos events">
+                        <video controls playsinline preload="metadata">
+                            <source src="https://res.cloudinary.com/kp0ox60b/video/upload/v1789807496/From_building_blocks_to_bigger_dreams_and_from_playground_games_to_lifelong_paths._It_was_an_honour_to_have_been_part_of_creativing_memories_of_the_Toivo_Ya.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-label">TOIVO YA TOIVO — CREATING MEMORIES</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-```
-
 </section>
+
+<div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close image viewer">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+    <img id="lightboxImage" src="" alt="Expanded portfolio photograph">
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&#10095;</button>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 
 <section id="showreel" class="showreel-section">
     <div class="showreel-video">
@@ -1212,8 +1272,6 @@ footer {
             Your browser does not support the video tag.
         </video>
     </div>
-
-```
 <div class="sound-indicator" id="soundIndicator">🔇 CLICK FOR SOUND</div>
 
 <div class="container">
@@ -1229,15 +1287,11 @@ footer {
         </a>
     </div>
 </div>
-```
-
 </section>
 
 <section id="about" class="advantage-section section-padding">
     <div class="container">
         <div class="small-title">WHY CHOOSE US</div>
-
-```
     <h2 class="section-title">
         THE AFRINOVA
         <span>ADVANTAGE</span>
@@ -1295,15 +1349,11 @@ footer {
         </div>
     </div>
 </div>
-```
-
 </section>
 
 <section id="testimonials" class="testimonial-section section-padding">
     <div class="container">
         <div class="small-title">TESTIMONIALS</div>
-
-```
     <h2 class="section-title">
         WHAT OUR
         <span>CLIENTS SAY</span>
@@ -1337,8 +1387,6 @@ footer {
         </div>
     </div>
 </div>
-```
-
 </section>
 
 <section id="booking" class="booking-section section-padding">
@@ -1346,8 +1394,6 @@ footer {
         <div class="booking-layout">
             <div class="booking-contact">
                 <div class="small-title">BOOK A SHOOT</div>
-
-```
             <h2>
                 LET'S CREATE
                 <br>
@@ -1419,8 +1465,6 @@ footer {
         </div>
     </div>
 </div>
-```
-
 </section>
 
 <footer id="contact">
@@ -1428,8 +1472,6 @@ footer {
         <div class="footer-top">
             <div class="logo">
                 <div class="logo-icon">📷</div>
-
-```
             <div class="logo-text">
                 <strong>AFRINOVA</strong>
                 <span>MEDIA</span>
@@ -1459,8 +1501,6 @@ footer {
         </div>
     </div>
 </div>
-```
-
 </footer>
 
 <script>
@@ -1550,15 +1590,74 @@ I look forward to hearing from you.
 });
 
 const filterButtons = document.querySelectorAll(".filter-btn");
+const portfolioItems = document.querySelectorAll(".portfolio-grid [data-category]");
 
 filterButtons.forEach(function(button) {
     button.addEventListener("click", function() {
-        filterButtons.forEach(function(btn) {
-            btn.classList.remove("active");
-        });
-
+        filterButtons.forEach(function(btn) { btn.classList.remove("active"); });
         button.classList.add("active");
+
+        const filter = button.dataset.filter || "all";
+        portfolioItems.forEach(function(item) {
+            const categories = (item.dataset.category || "").split(/\s+/);
+            item.hidden = filter !== "all" && !categories.includes(filter);
+            if (item.hidden) {
+                const video = item.querySelector("video");
+                if (video) video.pause();
+            }
+        });
     });
+});
+
+/* Clickable photo gallery with previous/next navigation */
+const galleryPhotos = Array.from(document.querySelectorAll(".photo-item"));
+const galleryLightbox = document.getElementById("galleryLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCaption = document.getElementById("lightboxCaption");
+let currentPhotoIndex = 0;
+
+function showGalleryPhoto(index) {
+    if (!galleryPhotos.length) return;
+    currentPhotoIndex = (index + galleryPhotos.length) % galleryPhotos.length;
+    const photo = galleryPhotos[currentPhotoIndex];
+    lightboxImage.src = photo.dataset.fullImage;
+    lightboxImage.alt = photo.querySelector("img").alt || "Portfolio photograph";
+    lightboxCaption.textContent = photo.querySelector(".photo-label")?.textContent || "";
+}
+
+function openGalleryPhoto(index) {
+    showGalleryPhoto(index);
+    galleryLightbox.classList.add("open");
+    galleryLightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    document.getElementById("lightboxClose").focus();
+}
+
+function closeGalleryPhoto() {
+    galleryLightbox.classList.remove("open");
+    galleryLightbox.setAttribute("aria-hidden", "true");
+    lightboxImage.src = "";
+    document.body.style.overflow = "";
+}
+
+galleryPhotos.forEach(function(photo, index) {
+    photo.addEventListener("click", function() { openGalleryPhoto(index); });
+});
+document.getElementById("lightboxClose").addEventListener("click", closeGalleryPhoto);
+document.getElementById("lightboxPrev").addEventListener("click", function() {
+    showGalleryPhoto(currentPhotoIndex - 1);
+});
+document.getElementById("lightboxNext").addEventListener("click", function() {
+    showGalleryPhoto(currentPhotoIndex + 1);
+});
+galleryLightbox.addEventListener("click", function(event) {
+    if (event.target === galleryLightbox) closeGalleryPhoto();
+});
+document.addEventListener("keydown", function(event) {
+    if (!galleryLightbox.classList.contains("open")) return;
+    if (event.key === "Escape") closeGalleryPhoto();
+    if (event.key === "ArrowLeft") showGalleryPhoto(currentPhotoIndex - 1);
+    if (event.key === "ArrowRight") showGalleryPhoto(currentPhotoIndex + 1);
 });
 
 const showreel = document.getElementById("showreel");
@@ -1607,11 +1706,14 @@ soundIndicator.addEventListener("click", function(event) {
     toggleShowreelSound();
 });
 
-document.getElementById("showreelButton").addEventListener("click", function() {
-    setTimeout(function() {
-        showreelVideo.play().catch(function() {});
-    }, 500);
-});
+const showreelButton = document.getElementById("showreelButton");
+if (showreelButton) {
+    showreelButton.addEventListener("click", function() {
+        setTimeout(function() {
+            showreelVideo.play().catch(function() {});
+        }, 500);
+    });
+}
 
 const heroVideo = document.querySelector(".hero-video");
 heroVideo.play().catch(function() {});
